@@ -1,3 +1,3 @@
-pm2 stop costserver && \
+pm2 stop orlovserver && \
 git merge master --ff-only && \
-pm2 start costserver 
+pm2 start orlovserver 
