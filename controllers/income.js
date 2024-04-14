@@ -29,7 +29,6 @@ const all = async (req, res) => {
 const add = async (req, res) => {
     try {
         const {name, sum, date} = req.body;
-        console.log(date);
         if (!name || !sum || !date) {
             return res.status(400).json({message: "Не все поля заполенены"});
         }

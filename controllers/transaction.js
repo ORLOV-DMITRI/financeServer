@@ -31,9 +31,7 @@ const add = async (req, res) => {
 
     try {
         const {depositId, type, sum} = req.body;
-        console.log(depositId);
-        console.log(type);
-        console.log(sum);
+
         const transaction = await prisma.transaction.create({
             data: {
                 depositId,

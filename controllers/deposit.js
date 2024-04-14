@@ -52,7 +52,6 @@ const add = async (req, res) => {
 const remove = async (req, res) => {
     const {id} = req.params;
     try {
-        console.log(id);
         await prisma.deposit.delete({where: {id}});
         return res.status(204).json("OK");
     } catch (error) {
@@ -69,7 +68,6 @@ const remove = async (req, res) => {
 const edit = async (req, res) => {
     const data = req.body;
     const id = data.id;
-    console.log(data);
     try {
         const deposit = await prisma.deposit.update({where: {id}, data: {...data}});
         return res.status(204).json(deposit);

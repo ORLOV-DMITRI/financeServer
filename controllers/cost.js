@@ -24,7 +24,6 @@ const all = async (req, res) => {
                 lte: endOfDay // Дата окончания (включительно)
             };
         }
-        console.log(queryWhere);
         let costList = await prisma.cost.findMany({
             where: queryWhere,
             orderBy: {
@@ -46,7 +45,6 @@ const all = async (req, res) => {
 const add = async (req, res) => {
     try {
         const {name, sum, date} = req.body;
-
         if (!name || !sum || !date) {
             return res.status(400).json({message: "Не все поля заполенены"});
         }
