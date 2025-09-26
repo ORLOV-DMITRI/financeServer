@@ -41,7 +41,7 @@ const add = async (req, res) => {
 
         return res.status(201).json(newDeposit);
     } catch (error) {
-        return res.status(500).json({message: "Ошибка: " + error.message}); // Добавлено .message для более чистого вывода ошибки
+        return res.status(500).json({message: "Ошибка: " + error.message});
     }
 };
 /**

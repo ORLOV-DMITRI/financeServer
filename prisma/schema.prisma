@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -49,7 +46,7 @@ model Deposit {
 model Transaction {
   id        String   @id @default(uuid())
   depositId String
-  type      String // "add" для пополнения, "remove" для снятия
+  type      String
   sum       Int
   date      DateTime @default(now())
   Deposit   Deposit  @relation(fields: [depositId], references: [id], onDelete: Cascade)

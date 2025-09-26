@@ -28,7 +28,7 @@ async function getTotalIncome(userId) {
             sum: true,
         },
     });
-    return result._sum.sum || 0; // Возвращает общую сумму доходов или 0, если доходов нет
+    return result._sum.sum || 0;
 }
 async function getTotalExpenses(userId) {
     const result = await prisma.cost.aggregate({
@@ -39,7 +39,7 @@ async function getTotalExpenses(userId) {
             sum: true,
         },
     });
-    return result._sum.sum || 0; // Возвращает общую сумму расходов или 0, если расходов нет
+    return result._sum.sum || 0;
 }
 async function getTotalDeposits(userId) {
     const result = await prisma.deposit.aggregate({
@@ -50,7 +50,7 @@ async function getTotalDeposits(userId) {
             sum: true,
         },
     });
-    return result._sum.sum || 0; // Возвращает общую сумму в конвертах или 0, если конвертов нет
+    return result._sum.sum || 0;
 }
 module.exports = {
     available

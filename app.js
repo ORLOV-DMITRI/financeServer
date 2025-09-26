@@ -13,12 +13,11 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 
-// Используйте CORS с опциями для всех маршрутов
 app.use(cors({
-    origin: "*", // Это позволит запросы со всех источников
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Указываем, какие методы разрешены при CORS запросах
-    allowedHeaders: ["Content-Type", "Authorization"], // Указываем, какие заголовки разрешены при CORS запросах
-    credentials: true // Это позволяет делать запросы с использованием кукисов и авторизации
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
 }));
 
 
@@ -30,5 +29,12 @@ app.use("/api/transaction", require("./routes/transaction"));
 app.use("/api/total", require("./routes/total"));
 app.use("/api/quote", require("./routes/quote"));
 
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Finance Backend API',
+        version: '1.0.0',
+        status: 'running'
+    });
+});
 
 module.exports = app;

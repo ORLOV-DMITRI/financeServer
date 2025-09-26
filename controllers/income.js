@@ -12,7 +12,7 @@ const all = async (req, res) => {
                 userId: req.user.id
             },
             orderBy: {
-                date: 'desc' // Сортировка по убыванию (от новых к старым)
+                date: 'desc'
             }
         });
         res.status(200).json(incomeList);
@@ -58,7 +58,7 @@ const remove = async (req, res) => {
  * @access Private
  */
 const removeMultiple  = async (req, res) => {
-    const { ids } = req.body; // Предполагается, что ids - это массив идентификаторов
+    const { ids } = req.body;
     try {
         await prisma.income.deleteMany({
             where: {

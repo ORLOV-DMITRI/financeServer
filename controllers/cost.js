@@ -14,20 +14,20 @@ const all = async (req, res) => {
         };
         if (startDate && endDate) {
             const startOfDay = new Date(startDate);
-            startOfDay.setUTCHours(0, 0, 0, 0); // Устанавливаем начало дня
+            startOfDay.setUTCHours(0, 0, 0, 0);
 
             const endOfDay = new Date(endDate);
             endOfDay.setUTCHours(23, 59, 59, 999);
 
             queryWhere.date = {
-                gte: startOfDay, // Дата начала (включительно)
-                lte: endOfDay // Дата окончания (включительно)
+                gte: startOfDay,
+                lte: endOfDay
             };
         }
         let costList = await prisma.cost.findMany({
             where: queryWhere,
             orderBy: {
-                date: 'desc' // Сортировка по убыванию (от новых к старым)
+                date: 'desc'
             }
         });
 
@@ -59,7 +59,7 @@ const add = async (req, res) => {
 
         return res.status(201).json(newCost);
     } catch (error) {
-        return res.status(500).json({message: "Ошибка: " + error.message}); // Добавлено .message для более чистого вывода ошибки
+        return res.status(500).json({message: "Ошибка: " + error.message});
     }
 };
 /**
@@ -82,7 +82,7 @@ const remove = async (req, res) => {
  * @access Private
  */
 const removeMultiple = async (req, res) => {
-    const {ids} = req.body; // Предполагается, что ids - это массив идентификаторов
+    const {ids} = req.body;
     if (!ids) {
         return res.status(400).json({message: "No ids provided for deletion"});
     }
